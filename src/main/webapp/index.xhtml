@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="template.xhtml">
+            <ui:define name="title">#{msg.pageOneTitle} — ODIEpiceArc</ui:define>
+            <ui:define name="top">
+                <h1>#{msg.pageOneTitle}</h1>
+            </ui:define>
+            <ui:define name="content">
+                
+                <h:form>
+                    
+                    <div style="text-align: left;">
+                        <h:messages />
+                    </div>
+                    
+                    <label>#{msg.pageOneConiferTypeLabel} :</label>
+                    <h:selectOneMenu 
+                        id="conifer_type"
+                        value="#{productBean.coniferType}" 
+                        converter="#{coniferTypeLOVConverter}" 
+                        required="true" 
+                        requiredMessage="#{msg.pageOneConiferTypeLabel} #{msg.required}">
+                        <f:selectItem 
+                            noSelectionOption="true"
+                            itemValue="#{null}" 
+                            itemLabel="#{msg.globalSelectPlaceholder}" />
+                        <f:selectItems 
+                            value="#{productBean.coniferTypes}" 
+                            var="coniferType"
+                            itemLabel="#{coniferType}" />
+                        <f:ajax 
+                            listener="#{productBean.selectProductsForConiferType}" 
+                            render="conifer_size product_price" />
+                    </h:selectOneMenu>
+                    
+                    <label>#{msg.pageOneConiferSizeLabel} :</label>
+                    <h:selectOneMenu 
+                        id="conifer_size" 
+                        value="#{productBean.product}"
+                        converter="#{productLOVConverter}"
+                        required="true"
+                        requiredMessage="#{msg.pageOneConiferSizeLabel} #{msg.required}">
+                        <f:selectItem 
+                            noSelectionOption="true"
+                            itemValue="#{null}" 
+                            itemLabel="#{msg.globalSelectPlaceholder}" />
+                        <f:selectItems 
+                            value="#{productBean.products}" 
+                            var="product" 
+                            itemLabel="#{product.coniferSize.code}" />
+                        <f:ajax 
+                            listener="#{productBean.selectDeliveryAndPickupDatesForProduct}" 
+                            render="product_price" />
+                        <f:ajax 
+                            execute="@this" 
+                            immediate="true" 
+                            render="dates" />
+                    </h:selectOneMenu>
+                    
+                    <h:panelGroup id="dates">
+                        <h:panelGroup 
+                            rendered="#{not empty productBean.deliveryDates and not empty productBean.pickupDates}">
+                            
+                            <label>#{msg.pageOneDeliveryDateLabel} :</label>
+                            <h:selectOneMenu 
+                                id="delivery_date" 
+                                value="#{productBean.deliveryDate}" 
+                                converter="#{deliveryDateLOVConverter}"
+                                required="true" 
+                                requiredMessage="#{msg.pageOneDeliveryDateLabel} #{msg.required}">
+                                <f:selectItems 
+                                    value="#{productBean.deliveryDates}" 
+                                    var="deliveryDate" 
+                                    itemLabel="#{deliveryDate.formatedDate}"  />
+                            </h:selectOneMenu>
+
+                            <label>#{msg.pageOnePickupDateLabel} :</label>
+                            <h:selectOneMenu 
+                                id="pickup_date" 
+                                value="#{productBean.pickupDate}" 
+                                converter="#{pickupDateLOVConverter}"
+                                required="true"
+                                requiredMessage="#{msg.pageOnePickupDateLabel} #{msg.required}">
+                                <f:selectItems 
+                                    value="#{productBean.pickupDates}" 
+                                    var="pickupDate" 
+                                    itemLabel="#{pickupDate.formatedDate}" />
+                            </h:selectOneMenu>
+                            
+                        </h:panelGroup>
+                    </h:panelGroup>
+                    
+                    <h:outputText id="product_price" class="product_price" value="#{productBean.product.price != null ? productBean.product.price : '0.00' } #{msg.currency}" />
+                    
+                    <h:commandButton value="#{msg.pageOneSubmitLabel}" action="#{productBean.addProduct}"/>
+                </h:form>
+                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

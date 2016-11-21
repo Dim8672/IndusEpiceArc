@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="template.xhtml">
+            
+            <ui:define name="title">#{msg.pageThreeTitle} — ODIEpiceArc</ui:define>
+            
+            <ui:define name="top">
+                <h1>#{msg.pageThreeTitle}</h1>
+            </ui:define>
+            
+            <ui:define name="content"> 
+                <h:form>
+                    <label class="fixed">#{msg.pageThreeFirstNameLabel} :</label><h:outputText title="#{msg.pageThreeFirstNameLabel}" value="#{orderBean.customer.firstName}"/><br/>
+                    <label class="fixed">#{msg.pageThreeLastNameLabel} :</label><h:outputText title="#{msg.pageThreeLastNameLabel}" value="#{orderBean.customer.lastName}"/><br/>
+                    <label class="fixed">#{msg.pageThreeAddressLabel} :</label><h:outputText title="#{msg.pageThreeAddressLabel}" value="#{orderBean.customer.address}"/><br/>
+                    <label class="fixed">#{msg.pageThreeZipLabel} :</label><h:outputText title="#{msg.pageThreeZipLabel}" value="#{orderBean.customer.zip}"/><br/>
+                    <label class="fixed">#{msg.pageThreeCityLabel} :</label><h:outputText title="#{msg.pageThreeCityLabel}" value="#{orderBean.customer.city}"/><br/>
+                    <label class="fixed">#{msg.pageThreePhoneLabel} :</label><h:outputText title="#{msg.pageThreePhoneLabel}" value="#{orderBean.customer.phone}"/><br/>
+                    <label class="fixed">#{msg.pageThreeConiferTypeLabel} :</label><h:outputText title="#{msg.pageThreeConiferTypeLabel}" value="#{orderBean.product.coniferType}"/><br/>
+                    <label class="fixed">#{msg.pageThreeConiferSizeLabel} :</label><h:outputText title="#{msg.pageThreeConiferSizeLabel}" value="#{orderBean.product.coniferSize}"/><br/>
+                    <label class="fixed">#{msg.pageThreeDeliveryDateLabel} :</label><h:outputText title="#{msg.pageThreeDeliveryDateLabel}" value="#{orderBean.deliveryDate.formatedDate}"/><br/>
+                    <label class="fixed">#{msg.pageThreePickupDateLabel} :</label><h:outputText title="#{msg.pageThreePickupDateLabel}" value="#{orderBean.pickupDate.formatedDate}"/><br/>
+                    <label class="fixed">#{msg.pageThreeProductPrice} :</label><h:outputText title="#{msg.pageThreeProductPrice}" value="#{orderBean.product.price} #{msg.currency}"/><br/>
+                    <label class="fixed">#{msg.pageThreeDeliveryCost} :</label><h:outputText title="#{msg.pageThreeDeliveryCost}" value="#{orderBean.deliveryCost} #{msg.currency}"/><br/>
+                    <label class="fixed">#{msg.pageThreeAmount} :</label><h:outputText title="#{msg.pageThreeAmount}" value="#{orderBean.product.price + orderBean.deliveryCost} #{msg.currency}"/><br/>
+                    <h:commandButton value="#{msg.pageThreeSubmitLabel}" action="#{orderBean.saveOrder}"/>
+                </h:form>
+            </ui:define>
+            
+        </ui:composition>
+    </h:body>
+</html>
+
