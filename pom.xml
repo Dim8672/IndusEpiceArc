@@ -108,9 +108,9 @@
                 <artifactId>maven-glassfish-plugin</artifactId>
                 <version>2.1</version>
                 <configuration>
-                    <glassfishDirectory>${GLASSFISH_HOME}</glassfishDirectory>
+                    <glassfishDirectory>C:\glassfish4\glassfish</glassfishDirectory>
                     <user>${glassfish.user}</user>
-                    <passwordFile>${basedir}/passwords/${glassfish.pwdfile}</passwordFile>
+                    <passwordFile>C:\glassfish4\glassfish\domains\${glassfish.domain}\config\${glassfish.pwdfile}</passwordFile>
                     <echo>true</echo>
                     <debug>true</debug>
                     <terse>true</terse>
