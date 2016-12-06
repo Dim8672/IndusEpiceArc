@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-Development Deploy</actionName>
+            <displayName>Development Deploy</displayName>
+            <goals>
+                <goal>properties:read-project-properties</goal>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>glassfish:deploy</goal>
+                <goal>-e</goal>
+            </goals>
+            <properties>
+                <glassfish.properties.file.argument>development</glassfish.properties.file.argument>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Development Redeploying</actionName>
+            <displayName>Development Redeploying</displayName>
+            <goals>
+                <goal>properties:read-project-properties</goal>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>glassfish:redeploy</goal>
+                <goal>-e</goal>
+            </goals>
+            <properties>
+                <glassfish.properties.file.argument>development</glassfish.properties.file.argument>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Integration Deployment</actionName>
+            <displayName>Integration Deployment</displayName>
+            <goals>
+                <goal>properties:read-project-properties</goal>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>glassfish:deploy</goal>
+                <goal>-e</goal>
+            </goals>
+            <properties>
+                <glassfish.properties.file.argument>integration</glassfish.properties.file.argument>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Integration Redeploy</actionName>
+            <displayName>Integration Redeploy</displayName>
+            <goals>
+                <goal>properties:read-project-properties</goal>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>glassfish:redeploy</goal>
+                <goal>-e</goal>
+            </goals>
+            <properties>
+                <glassfish.properties.file.argument>integration</glassfish.properties.file.argument>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Production Deployment</actionName>
+            <displayName>Production Deployment</displayName>
+            <goals>
+                <goal>properties:read-project-properties</goal>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>glassfish:deploy</goal>
+                <goal>-e</goal>
+            </goals>
+            <properties>
+                <glassfish.properties.file.argument>production</glassfish.properties.file.argument>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Production Redploy</actionName>
+            <displayName>Production Redploy</displayName>
+            <goals>
+                <goal>properties:read-project-properties</goal>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>glassfish:redeploy</goal>
+                <goal>-e</goal>
+            </goals>
+            <properties>
+                <glassfish.properties.file.argument>production</glassfish.properties.file.argument>
+            </properties>
+        </action>
+    </actions>
