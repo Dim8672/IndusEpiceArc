@@ -51,14 +51,14 @@ public class ServicesTest {
     @org.junit.Test
     public void testGetConiferTypes() throws Exception {
         System.out.println("getConiferTypes");
-//        EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-//        Services instance = (Services)container.getContext().lookup("java:global/classes/Services");
-//        List<ConiferType> expResult = null;
-//        List<ConiferType> result = instance.getConiferTypes();
-//        assertEquals(expResult, result);
-//        container.close();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
+        Services instance = (Services)container.getContext().lookup("java:global/classes/Services");
+        List<ConiferType> expResult = null;
+        List<ConiferType> result = instance.getConiferTypes();
+        assertEquals(expResult, result);
+        container.close();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
