@@ -40,7 +40,7 @@ public class Services implements Serializable{
      * Contient la liste de toutes les commandes passées sur le site d'Epicé-Arc
      * L'ID de la commande est utilisé comme clé, et la commande comme valeur. Cela permet de rechercher une commande de manière très rapide.
      */
-    private Map<Long, Order> orders;
+    public Map<Long, Order> orders;
     
     /**
      * Contient la liste de toutes les dates de livraison et de retour disponibles.
